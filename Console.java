@@ -24,6 +24,8 @@ import javax.swing.text.BadLocationException;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.File;
 
 /**
  * <h1>ARC Console</h1>
@@ -486,20 +488,29 @@ public class Console{
     * @param strFileName name of the image file you want to load
     * @return an image object that can be used in the drawImage method
     */
-  public BufferedImage loadImage(String strFileName){
+  public BufferedImage loadImage(String strFileName){  
+    // Try to read the file from the jar file
     InputStream imageclass = null;
     imageclass = this.getClass().getResourceAsStream(strFileName);
     if(imageclass == null){
-      System.out.println("Unable to load image file: \""+strFileName+"\"");
-      return null;
+      //System.out.println("Unable to load image file: \""+strFileName+"\"");
+      //return null;
     }else{
       try{
         return ImageIO.read(imageclass);
       }catch(IOException e){
         //System.out.println(e.toString());
-        System.out.println("Unable to load image file: \""+strFileName+"\"");
-        return null;
+        //System.out.println("Unable to load image file: \""+strFileName+"\"");
+        //return null;
       }
+    }
+    // Then try to read the local file
+    try{
+      BufferedImage theimage = ImageIO.read(new File(strFileName));
+      return theimage;
+    }catch(IOException e){
+      System.out.println("Unable to load local image file: \""+strFileName+"\"");
+      return null;
     }
   }
   /** Load a font based on a filename and returns a Font object<br>
@@ -509,18 +520,29 @@ public class Console{
     * @param intSize size of the font you would like to load
     * @return a font object that can be used to set the text font or draw font
     */
-  public Font loadFont(String strFileName, int intSize){
+  public Font loadFont(String strFileName, int intSize){    
     Font theFont = null;
+    // Try to load the font from the jar file
     try{
-      theFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(strFileName)).deriveFont(Font.PLAIN, intSize); 
-      return theFont;
+      theFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(strFileName)); 
+      return theFont.deriveFont(Font.PLAIN, intSize);
+    }catch(Exception e){
+      //System.out.println(e.toString());
+    }
+
+    // Then try to load the font from the local filesystem
+    try{
+      theFont = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(strFileName)); 
+      return theFont.deriveFont(Font.PLAIN, intSize);
     }catch(Exception e){
       //System.out.println(e.toString());
       System.out.println("Unable to load font file \""+strFileName+"\". Setting default font"); 
     }
+    
+    // Then load the default font if all else fails
     try{
-      theFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream("Hack-Regular.ttf")).deriveFont(Font.PLAIN, 20); 
-      return theFont;
+      theFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream("Hack-Regular.ttf")); 
+      return theFont.deriveFont(Font.PLAIN, 20);
     }catch(Exception e){
       //System.out.println(e.toString());
       System.out.println("Unable to load default font file \"Hack-Regular.tff\".  Will default to Java's native font for your OS");
