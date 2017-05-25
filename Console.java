@@ -595,6 +595,8 @@ public class Console{
     this.theFrame.setContentPane(this.theArea);
     this.theFrame.pack();
     this.theFrame.setVisible(true); 
+    // Need to sleep for a bit... just in case the next command needs to modify the window and it isn't fully shown yet
+    this.sleep(500);
   }
   // Constructors
   /** Create a standard Console window<br>
