@@ -553,6 +553,13 @@ public class Console{
   public void closeConsole(){
     this.theFrame.dispatchEvent(new WindowEvent(this.theFrame, WindowEvent.WINDOW_CLOSING));
   }
+  /** Closes the console window without exiting the program<br>
+	* Useful for multi-window applications 
+	*/
+  public void closeWindow(){
+    this.theFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    this.theFrame.dispatchEvent(new WindowEvent(this.theFrame, WindowEvent.WINDOW_CLOSING));
+  }
   /** Pauses the program for the designated number of milliseconds 
     * @param intMS number of milliseconds to pause the program for
     */
