@@ -425,6 +425,9 @@ public class Console{
       }catch(InterruptedException e){
       }
     }
+    // Need to sleep becuase it seems that if I don't, the char pressed might appear
+    // in the next readline
+    this.sleep(1);
     return this.theArea.chrCharPressed;
   }
   /** Reads the next character pressed without waiting for the return key<br>
@@ -440,6 +443,9 @@ public class Console{
       }catch(InterruptedException e){
       }
     }
+    // Need to sleep becuase it seems that if I don't, the char pressed might appear
+    // in the next readline
+    this.sleep(1);
     return this.theArea.intKeyPressed;
   }
   // Gets whatever character is in the "buffer"
@@ -450,6 +456,13 @@ public class Console{
     * @return a character value of what the user types into the console
     */
   public char currentChar(){
+    // Need to sleep for a millisecond just in case the programmer using the method
+    // puts this in a while loop with no sleep
+    // thus creating a blocking situation
+    // Don't really want to do this becuase 60 fps is 17ms.
+    // So adding a millisecond creates about a 5% delay.
+    // The student programmer should put a sleep in themselves... but oh well
+    this.sleep(1);
     return this.theArea.chrCurrentChar;
   }
   /** Immediately returns the current keycode pressed if any<br>
@@ -458,6 +471,13 @@ public class Console{
     * @return an integer value of the character code of what the user types into the console
     */
   public int currentKey(){
+    // Need to sleep for a millisecond just in case the programmer using the method
+    // puts this in a while loop with no sleep
+    // thus creating a blocking situation
+    // Don't really want to do this becuase 60 fps is 17ms.
+    // So adding a millisecond creates about a 5% delay.
+    // The student programmer should put a sleep in themselves... but oh well
+    this.sleep(1);
     return this.theArea.intCurrentKey;
   }
   // realtime mouse location methods
@@ -466,6 +486,13 @@ public class Console{
     * @return current x location of the mouse
     */
   public int currentMouseX(){
+    // Need to sleep for a millisecond just in case the programmer using the method
+    // puts this in a while loop with no sleep
+    // thus creating a blocking situation
+    // Don't really want to do this becuase 60 fps is 17ms.
+    // So adding a millisecond creates about a 5% delay.
+    // The student programmer should put a sleep in themselves... but oh well
+    this.sleep(1);
     return this.theArea.intMouseX;
   }
   /** Immediately returns the Y location of the mouse<br>
@@ -473,6 +500,13 @@ public class Console{
     * @return current y location of the mouse
     */
   public int currentMouseY(){
+    // Need to sleep for a millisecond just in case the programmer using the method
+    // puts this in a while loop with no sleep
+    // thus creating a blocking situation
+    // Don't really want to do this becuase 60 fps is 17ms.
+    // So adding a millisecond creates about a 5% delay.
+    // The student programmer should put a sleep in themselves... but oh well
+    this.sleep(1);
     return this.theArea.intMouseY;
   }
   /** Immediately returns the current mouse button being pressed<br>
@@ -480,6 +514,13 @@ public class Console{
     * @return current button the mouse being pressed
     */
   public int currentMouseButton(){
+    // Need to sleep for a millisecond just in case the programmer using the method
+    // puts this in a while loop with no sleep
+    // thus creating a blocking situation
+    // Don't really want to do this becuase 60 fps is 17ms.
+    // So adding a millisecond creates about a 5% delay.
+    // The student programmer should put a sleep in themselves... but oh well
+    this.sleep(1);
     return this.theArea.intMouseBut;
   }
   // Console Utility Methods
@@ -678,10 +719,9 @@ public class Console{
       // for currentChar and all related methods
       this.intCurrentKey = evt.getKeyCode();
       this.chrCurrentChar = evt.getKeyChar();
-      // for getChar and all related methods
       if(this.blnKeyRequest == true){
-        this.intKeyPressed = evt.getKeyCode();
-        this.chrCharPressed = evt.getKeyChar();
+        // for getChar and all related methods you will have to wait for keypressed.
+        // This will notify that a key was pressed
         synchronized(this.strHolder) {
           this.strHolder.notify();
         }
