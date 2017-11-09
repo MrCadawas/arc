@@ -571,7 +571,7 @@ public class Console{
     }catch(Exception e){
       //System.out.println(e.toString());
     }
-
+    
     // Then try to load the font from the local filesystem
     try{
       theFont = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(strFileName)); 
@@ -596,8 +596,8 @@ public class Console{
     this.theFrame.dispatchEvent(new WindowEvent(this.theFrame, WindowEvent.WINDOW_CLOSING));
   }
   /** Closes the console window without exiting the program<br>
- * Useful for multi-window applications 
- */
+    * Useful for multi-window applications 
+    */
   public void closeWindow(){
     this.theFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     this.theFrame.dispatchEvent(new WindowEvent(this.theFrame, WindowEvent.WINDOW_CLOSING));
@@ -644,8 +644,6 @@ public class Console{
     this.theFrame.setContentPane(this.theArea);
     this.theFrame.pack();
     this.theFrame.setVisible(true); 
-    // Need to sleep for a bit... just in case the next command needs to modify the window and it isn't fully shown yet
-    this.sleep(500);
   }
   // Constructors
   /** Create a standard Console window<br>
@@ -825,7 +823,16 @@ public class Console{
     public void paintComponent(Graphics g){
       Graphics2D g2d = (Graphics2D)g; 
       g2d.drawImage(drawCanvas, 0, 0, null);
-      super.paintComponent(g2d);
+      try{
+        // For some weird reason, this method below gets a null pointer.  But the program still works after
+        // And it is very random
+        // I think it may happen because we might be trying to do a readline before the window is ready
+        super.paintComponent(g2d);
+      }catch(NullPointerException e){
+        //System.out.println("null");
+        // So let's ignore the exception if it happens
+      }
+      
       g2d.dispose();
     }
     public ARCTextArea(int intWidth, int intHeight){
