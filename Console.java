@@ -37,8 +37,8 @@ import java.io.File;
  * <p>
  *
  * @author  Alfred Cadawas
- * @version 1.0
- * @since   2017-04-20 
+ * @version 1.1
+ * @since   2017-11-09 
  */
 public class Console{
   private String strTitle = "Console";
