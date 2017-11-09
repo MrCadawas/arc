@@ -274,7 +274,8 @@ public class Console{
     * @param intY y location of the start of the line
     */
   public void drawString(String strLine, int intX, int intY){
-    this.theArea.drawGraphics.drawString(strLine, intX, intY);
+    
+    this.theArea.drawGraphics.drawString(strLine, intX, intY+this.theArea.drawGraphics.getFontMetrics().getHeight());
   }
   /** Draw a filled arc at the designated coordinates and angles 
     * @param intX x location of the start of the arc
@@ -554,8 +555,8 @@ public class Console{
     this.theFrame.dispatchEvent(new WindowEvent(this.theFrame, WindowEvent.WINDOW_CLOSING));
   }
   /** Closes the console window without exiting the program<br>
-	* Useful for multi-window applications 
-	*/
+ * Useful for multi-window applications 
+ */
   public void closeWindow(){
     this.theFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     this.theFrame.dispatchEvent(new WindowEvent(this.theFrame, WindowEvent.WINDOW_CLOSING));
