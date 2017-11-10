@@ -720,6 +720,8 @@ public class Console{
       if(this.blnKeyRequest == true){
         // for getChar and all related methods you will have to wait for keypressed.
         // This will notify that a key was pressed
+        this.intKeyPressed = evt.getKeyCode();
+        this.chrCharPressed = evt.getKeyChar();
         synchronized(this.strHolder) {
           this.strHolder.notify();
         }
