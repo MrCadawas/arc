@@ -13,8 +13,8 @@ import java.io.IOException;
  * <p>
  *
  * @author  Alfred Cadawas
- * @version 1.0
- * @since   2017-04-20 
+ * @version 1.1
+ * @since   2021-01-13
  */
 
 public class TextInputFile{
