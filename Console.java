@@ -421,7 +421,7 @@ public class Console{
     long lngValue;
     strLine = this.readLine();
     lngValue = Long.parseLong(strLine);
-    return intValue;
+    return lngValue;
   }
   /** Reads a float number from the top layer and returns a float 
     * @return a float number of what the user types into the console's top layer
