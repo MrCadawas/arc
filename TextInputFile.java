@@ -70,6 +70,12 @@ public class TextInputFile{
   public char readChar(){
     return this.readLine().charAt(0);
   }
+  /** Read a line of text from the opened text file and convert it to an long
+    * @return an long converted from a line read from the file
+    */    
+  public long readLong(){
+    return Long.parseLong(this.readLine());
+  }
   /** Close the text file
     */    
   public void close(){
