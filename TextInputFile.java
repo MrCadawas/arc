@@ -76,6 +76,18 @@ public class TextInputFile{
   public long readLong(){
     return Long.parseLong(this.readLine());
   }
+  /** Read a line of text from the opened text file and convert it to a float
+    * @return a float converted from a line read from the file
+    */  
+  public float readFloat(){
+    return Float.parseFloat(this.readLine());
+  }
+  /** Read a line of text from the opened text file and convert it to a boolean
+    * @return a boolean converted from a line read from the file
+    */  
+  public boolean readBool(){
+    return Boolean.parseBoolean(this.readLine());
+  }
   /** Close the text file
     */    
   public void close(){
