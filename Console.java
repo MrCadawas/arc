@@ -37,8 +37,8 @@ import java.io.File;
  * <p>
  *
  * @author  Alfred Cadawas
- * @version 1.1
- * @since   2017-11-09 
+ * @version 1.2
+ * @since   2021-01-13 
  */
 public class Console{
   private String strTitle = "Console";
@@ -423,6 +423,26 @@ public class Console{
     lngValue = Long.parseLong(strLine);
     return intValue;
   }
+  /** Reads a float number from the top layer and returns a float 
+    * @return a float number of what the user types into the console's top layer
+    */
+  public float readFloat(){
+    String strLine;
+    float fltValue;
+    strLine = this.readLine();
+    fltValue = Float.parseFloat(strLine);
+    return fltValue;
+  }
+  /** Reads a true or false value from the top layer and returns a boolean 
+    * @return a boolean of what the user types into the console's top layer
+    */
+  public boolean readBool(){
+    String strLine;
+    boolean blnValue;
+    strLine = this.readLine();
+    blnValue = Boolean.parseBoolean(strLine);
+    return blnValue;
+  }  
   // Gets the next character pressed without waiting for enter key
   /** Reads the next character pressed without waiting for the return key 
     * @return a character value of what the user types into the console
