@@ -416,7 +416,7 @@ public class Console{
   /** Reads an long number from the top layer and returns an long 
     * @return an long number of what the user types into the console's top layer
     */
-  public char readLong(){
+  public long readLong(){
     String strLine;
     long lngValue;
     strLine = this.readLine();
