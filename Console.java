@@ -413,6 +413,16 @@ public class Console{
     chrValue = strLine.charAt(0);
     return chrValue;
   }
+  /** Reads an long number from the top layer and returns an long 
+    * @return an long number of what the user types into the console's top layer
+    */
+  public char readLong(){
+    String strLine;
+    long lngValue;
+    strLine = this.readLine();
+    lngValue = Long.parseLong(strLine);
+    return intValue;
+  }
   // Gets the next character pressed without waiting for enter key
   /** Reads the next character pressed without waiting for the return key 
     * @return a character value of what the user types into the console
