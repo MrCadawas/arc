@@ -850,7 +850,7 @@ public class Console{
       this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
       this.setDragEnabled(false);
       DefaultCaret caret = (DefaultCaret)this.getCaret();
-      caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE); 
+      caret.setUpdatePolicy(DefaultCaret.UPDATE_WHEN_ON_EDT); 
       this.drawCanvas = new BufferedImage(this.intAreaWidth, this.intAreaHeight, BufferedImage.TYPE_INT_RGB);
       this.drawGraphics = (Graphics2D)drawCanvas.getGraphics();
       this.drawGraphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
