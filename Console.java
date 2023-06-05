@@ -641,6 +641,20 @@ public class Console{
     }catch(InterruptedException e){
     }
   }
+  /** Gets the FontMetrics object for the current top (text) layer font<br>
+    * Useful for getting the width of a string in pixels
+    * @return the FontMetrics object for the current text font
+    */
+  public FontMetrics getTextFontMetrics(){
+    return this.theArea.getFontMetrics(this.theArea.getFont());
+  }
+  /** Gets the FontMetrics object for the current bottom (draw) layer font<br>
+    * Useful for getting the width of a string in pixels
+    * @return the FontMetrics object for the current draw font
+    */
+  public FontMetrics getDrawFontMetrics(){
+    return this.theArea.drawGraphics.getFontMetrics();
+  }
   // Used in any println method. Before writing the next line, check if you are at the bottom.
   // If you are, delete the top line to ensure that the next line will fit
   private void deleteFirstLineIfNeeded(){
