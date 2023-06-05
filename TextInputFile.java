@@ -13,8 +13,8 @@ import java.io.IOException;
  * <p>
  *
  * @author  Alfred Cadawas
- * @version 1.0
- * @since   2017-04-20 
+ * @version 1.1
+ * @since   2021-01-13
  */
 
 public class TextInputFile{
@@ -69,6 +69,24 @@ public class TextInputFile{
     */    
   public char readChar(){
     return this.readLine().charAt(0);
+  }
+  /** Read a line of text from the opened text file and convert it to an long
+    * @return an long converted from a line read from the file
+    */    
+  public long readLong(){
+    return Long.parseLong(this.readLine());
+  }
+  /** Read a line of text from the opened text file and convert it to a float
+    * @return a float converted from a line read from the file
+    */  
+  public float readFloat(){
+    return Float.parseFloat(this.readLine());
+  }
+  /** Read a line of text from the opened text file and convert it to a boolean
+    * @return a boolean converted from a line read from the file
+    */  
+  public boolean readBool(){
+    return Boolean.parseBoolean(this.readLine());
   }
   /** Close the text file
     */    
