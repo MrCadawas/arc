@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"arc","l":"Console"},{"p":"arc","l":"TextInputFile"},{"p":"arc","l":"TextOutputFile"}];updateSearchResults();
