@@ -42,7 +42,7 @@ public class TextInputFile{
     try{
       strOldLine = this.strLine;
       this.strLine = this.theBufferedReader.readLine();
-      if(this.strLine == null || this.strLine.length() == 0){
+      if(this.strLine == null){
         this.blnEOF = true;
       }     
       return strOldLine;
@@ -119,7 +119,7 @@ public class TextInputFile{
       // now that the file is opened for reading... read the first line but don't return it
       try{
         this.strLine = this.theBufferedReader.readLine();
-        if(this.strLine == null || this.strLine.length() == 0){
+        if(this.strLine == null){
           this.blnEOF = true;
         }
       }catch(IOException e){
